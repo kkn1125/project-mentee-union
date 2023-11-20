@@ -1,0 +1,7 @@
+[submodule "mentee-union-api"]
+  path = mentee-union-api
+  url = https://github.com/kkn1125/mentee-union-api.git
+
+[submodule "mentee-union-front"]
+  path = mentee-union-front
+  url = https://github.com/kkn1125/mentee-union-front.git
