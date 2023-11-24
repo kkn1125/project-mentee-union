@@ -5,5 +5,5 @@
 
 [submodule "mentee-union-front"]
   path = mentee-union-front
-  url = https://github.com/kkn1125/mentee-union-front.git
+  url = https://github.com/kkn1125/mentee-union-frontend.git
   branch = main
