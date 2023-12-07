@@ -7,3 +7,8 @@
   path = mentee-union-front
   url = https://github.com/kkn1125/mentee-union-frontend.git
   branch = main
+
+[submodule "mentee-union-socket"]
+  path = mentee-union-socket
+  url = https://github.com/kkn1125/mentee-union-socket.git
+  branch = main
