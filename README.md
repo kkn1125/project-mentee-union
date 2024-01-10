@@ -29,22 +29,35 @@
 - 데이터베이스: MongoDB, MySQL 등 커뮤니티 데이터 관리
 - 클라우드 및 배포: AWS, Docker 등을 통한 서비스 호스팅 및 관리
 
-## 사용자 경험
+## API 정의
 
-- 간편한 사용자 인터페이스: 쉽고 직관적인 네비게이션
-- 개인화된 경험: 사용자의 활동 및 관심사에 따른 맞춤형 콘텐츠 제공
-- 커뮤니티 참여 유도: 게임화 요소를 통해 사용자 참여와 상호작용 증진
-- 이 프로젝트의 핵심은 멘티들이 서로의 경험과 지식을 공유하고, 이를 통해 자연스럽게 멘토 역할로 성장할 수 있는 환경을 제공하는 것입니다. 이를 통해 멘토링에 대한 부담을 줄이고, 자기 주도적인 학습 및 성장을 촉진할 수 있습니다.
+- protocol: https
+- host: api.menteeunion.kro.kr
+- tls: ✅ (적용)
+- type: reverse proxy
+- base_path: api
+- api_path: https://api.menteeunion.kro.kr/api
 
-## 가상 인원
+토큰 이용 API: `AUTH` 표기
 
-- 백엔드 파트 1
-- 프론트 파트 1
-- 인프라 파트 1
-- 마케팅 파트 1
+### Users
 
-각 인원의 담당 포지션에 대해 조언을 얻고 코드리뷰를 진행하고 피드백은 복사하여 깃허브에 기록할 예정입니다.
-
-## 전체 프로젝트 구조
-
-@프로젝트 구조도@
+| method   | uri                               | query | params   | body            | desc                         | auth |
+| -------- | --------------------------------- | ----- | -------- | --------------- | ---------------------------- | ---- |
+| `GET`    | /users                            |       |          |                 | 전체 조회                    |      |
+| `GET`    | /users/:id                        |       | pk       |                 | 단건 조회                    |      |
+| `GET`    | /users/profile                    |       |          |                 | 단건 조회                    | ✅   |
+| `GET`    | /users/profile/seminars           |       |          |                 | 유저 세미나 정보 조회        | ✅   |
+| `GET`    | /users/profile/forums             |       |          |                 | 유저 포럼 정보 조회          | ✅   |
+| `GET`    | /users/profile/points             |       |          |                 | 유저 포인트 시스템 정보 조회 | ✅   |
+| `GET`    | /users/profile/resource/:filename |       | filename |                 | 유저 프로필 이미지 조회      | ✅   |
+| `GET`    | /users/socket/profile             |       |          |                 | 소켓서버 프로필 조회         | ✅   |
+| `POST`   | /users                            |       |          | user table 참조 | 회원가입                     | ✅   |
+| `POST`   | /users/points/already             |       |          |                 | 이미 추천했는지 여부         | ✅   |
+| `POST`   | /users/user-points                |       |          |                 | 특정 사용자 추천             | ✅   |
+| `POST`   | /users/check/email                |       |          |                 | 이메일 중복 검증             | ✅   |
+| `POST`   | /users/check/username             |       |          |                 | 유저네임 중복 검증           | ✅   |
+| `PUT`    | /users/:id                        |       | pk       |                 | 회원정보 수정                | ✅   |
+| `PUT`    | /users/profile                    |       | pk       |                 | 회원 프로필 이미지 수정      | ✅   |
+| `DELETE` | /users/:id                        |       | pk       |                 | 회원탈퇴                     | ✅   |
+| `DELETE` | /users/dormant                    |       | pk       |                 | 회원탈퇴 취소                | ✅   |
