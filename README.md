@@ -42,22 +42,228 @@
 
 ### Users
 
-| method   | uri                               | query | params   | body            | desc                         | auth |
-| -------- | --------------------------------- | ----- | -------- | --------------- | ---------------------------- | ---- |
-| `GET`    | /users                            |       |          |                 | 전체 조회                    |      |
-| `GET`    | /users/:id                        |       | pk       |                 | 단건 조회                    |      |
-| `GET`    | /users/profile                    |       |          |                 | 단건 조회                    | ✅   |
-| `GET`    | /users/profile/seminars           |       |          |                 | 유저 세미나 정보 조회        | ✅   |
-| `GET`    | /users/profile/forums             |       |          |                 | 유저 포럼 정보 조회          | ✅   |
-| `GET`    | /users/profile/points             |       |          |                 | 유저 포인트 시스템 정보 조회 | ✅   |
-| `GET`    | /users/profile/resource/:filename |       | filename |                 | 유저 프로필 이미지 조회      | ✅   |
-| `GET`    | /users/socket/profile             |       |          |                 | 소켓서버 프로필 조회         | ✅   |
-| `POST`   | /users                            |       |          | user table 참조 | 회원가입                     | ✅   |
-| `POST`   | /users/points/already             |       |          |                 | 이미 추천했는지 여부         | ✅   |
-| `POST`   | /users/user-points                |       |          |                 | 특정 사용자 추천             | ✅   |
-| `POST`   | /users/check/email                |       |          |                 | 이메일 중복 검증             | ✅   |
-| `POST`   | /users/check/username             |       |          |                 | 유저네임 중복 검증           | ✅   |
-| `PUT`    | /users/:id                        |       | pk       |                 | 회원정보 수정                | ✅   |
-| `PUT`    | /users/profile                    |       | pk       |                 | 회원 프로필 이미지 수정      | ✅   |
-| `DELETE` | /users/:id                        |       | pk       |                 | 회원탈퇴                     | ✅   |
-| `DELETE` | /users/dormant                    |       | pk       |                 | 회원탈퇴 취소                | ✅   |
+> 유저 API
+
+start_path: /users
+
+| method   | uri                         | query | params   | body            | desc                         | auth |
+| -------- | --------------------------- | ----- | -------- | --------------- | ---------------------------- | ---- |
+| `GET`    | /                           |       |          |                 | 전체 조회                    |      |
+| `GET`    | /:id                        |       | pk       |                 | 단건 조회                    |      |
+| `GET`    | /profile                    |       |          |                 | 단건 조회                    | ✅   |
+| `GET`    | /profile/seminars           |       |          |                 | 유저 세미나 정보 조회        | ✅   |
+| `GET`    | /profile/forums             |       |          |                 | 유저 포럼 정보 조회          | ✅   |
+| `GET`    | /profile/points             |       |          |                 | 유저 포인트 시스템 정보 조회 | ✅   |
+| `GET`    | /profile/resource/:filename |       | filename |                 | 유저 프로필 이미지 조회      | ✅   |
+| `GET`    | /socket/profile             |       |          |                 | 소켓서버 프로필 조회         | ✅   |
+| `POST`   | /                           |       |          | user table 참조 | 회원가입                     | ✅   |
+| `POST`   | /points/already             |       |          |                 | 이미 추천했는지 여부         | ✅   |
+| `POST`   | /user-points                |       |          |                 | 특정 사용자 추천             | ✅   |
+| `POST`   | /check/email                |       |          |                 | 이메일 중복 검증             | ✅   |
+| `POST`   | /check/username             |       |          |                 | 유저네임 중복 검증           | ✅   |
+| `PUT`    | /:id                        |       | pk       |                 | 회원정보 수정                | ✅   |
+| `PUT`    | /profile                    |       | pk       |                 | 회원 프로필 이미지 수정      | ✅   |
+| `DELETE` | /:id                        |       | pk       |                 | 회원탈퇴                     | ✅   |
+| `DELETE` | /dormant                    |       | pk       |                 | 회원탈퇴 취소                | ✅   |
+
+### Seminars
+
+> 세미나 API
+
+start_path: /seminars
+
+| method   | uri           | query | params | body | desc               | auth |
+| -------- | ------------- | ----- | ------ | ---- | ------------------ | ---- |
+| `GET`    | /             |       |        |      | 전체 조회          |      |
+| `GET`    | /:id          |       | pk     |      | 단건 조회          |      |
+| `GET`    | /participants |       |        |      | 참여자 조회        | ✅   |
+| `POST`   | /             |       |        |      | 생성               | ✅   |
+| `POST`   | /join         |       |        |      | 참여               | ✅   |
+| `POST`   | /confirm      |       |        |      | 참여 확정          | ✅   |
+| `POST`   | /upload       |       |        |      | 커버 이미지 업로드 | ✅   |
+| `PUT`    | /:id          |       | pk     |      | 수정               | ✅   |
+| `DELETE` | /:id          |       | pk     |      | 삭제               | ✅   |
+| `DELETE` | /cancel       |       |        |      | 참여 취소          | ✅   |
+
+### Forums
+
+> 포럼 API
+
+start_path: /forums
+
+| method   | uri     | query | params | body | desc         | auth |
+| -------- | ------- | ----- | ------ | ---- | ------------ | ---- |
+| `GET`    | /       |       |        |      | 전체 조회    |      |
+| `GET`    | /:id    |       | pk     |      | 단건 조회    |      |
+| `POST`   | /       |       |        |      | 생성         | ✅   |
+| `POST`   | /revert |       |        |      | 삭제 건 복구 | ✅   |
+| `PUT`    | /:id    |       | pk     |      | 수정         | ✅   |
+| `DELETE` | /:id    |       | pk     |      | 삭제         | ✅   |
+
+### Grade
+
+> 등급 API
+
+start_path: /grade
+
+| method   | uri  | query | params | body | desc      | auth |
+| -------- | ---- | ----- | ------ | ---- | --------- | ---- |
+| `GET`    | /    |       |        |      | 전체 조회 |      |
+| `GET`    | /:id |       | pk     |      | 단건 조회 |      |
+| `POST`   | /    |       |        |      | 생성      | ✅   |
+| `PUT`    | /:id |       | pk     |      | 수정      | ✅   |
+| `DELETE` | /:id |       | pk     |      | 삭제      | ✅   |
+
+### Mentoring
+
+> 멘토링 API
+
+start_path: /mentoring
+
+| method   | uri                                    | query | params              | body | desc                    | auth |
+| -------- | -------------------------------------- | ----- | ------------------- | ---- | ----------------------- | ---- |
+| `GET`    | /                                      |       |                     |      | 전체 조회               |      |
+| `GET`    | /users                                 |       | pk                  |      | 소켓에서 프로필 조회    | ✅   |
+| `GET`    | /:id                                   |       | pk                  |      | 단건 조회               |      |
+| `POST`   | /                                      |       |                     |      | 생성                    | ✅   |
+| `POST`   | /revert                                |       |                     |      | 삭제 건 복구            | ✅   |
+| `PUT`    | /:id                                   |       | pk                  |      | 수정                    | ✅   |
+| `DELETE` | /:id                                   |       | pk                  |      | 삭제                    | ✅   |
+| `DELETE` | /session/:session_id/mentee/:mentee_id |       | session_pk, user_pk |      | 세션에 속한 멘토링 삭제 | ✅   |
+
+### Mailer
+
+> 메일링 API
+
+start_path: /mailer
+
+| method | uri             | query                             | params | body | desc                               | auth |
+| ------ | --------------- | --------------------------------- | ------ | ---- | ---------------------------------- | ---- |
+| `GET`  | /confirm        | email                             |        |      | 사용자 이메일로 인증 메일 전송     |      |
+| `GET`  | /reset-redirect | tkn:토큰, e:이메일, type:검증유형 |        |      | 토큰 및 이메일 검증 후 리디렉션    |      |
+| `GET`  | /check          | q:암호화된 쿼리                   |        |      | 메일 토큰 검증 후 결과 페이지 응답 |      |
+
+### Auth
+
+> 인가 API
+
+start_path: /auth
+
+| method | uri      | query | params | body            | desc                    | auth |
+| ------ | -------- | ----- | ------ | --------------- | ----------------------- | ---- |
+| `GET`  | /profile |       |        |                 | 유저 프로필 데이터 조회 | ✅   |
+| `POST` | /signin  |       |        | email, password | 로그인                  |      |
+| `POST` | /signout |       |        |                 | 로그아웃 처리           | ✅   |
+
+### Mentoring Session
+
+> 멘토링 세션 API
+
+start_path: /mentoring-session
+
+| method   | uri             | query | params | body | desc                                                             | auth |
+| -------- | --------------- | ----- | ------ | ---- | ---------------------------------------------------------------- | ---- |
+| `GET`    | /               |       |        |      | 전체 조회                                                        |      |
+| `GET`    | /:id            |       |        |      | 단건 조회                                                        | ✅   |
+| `GET`    | /session/:id    |       |        |      | 단건 조회 (소켓)                                                 | ✅   |
+| `GET`    | /users          |       |        |      | 유저가 속한 세션의 멘토링 전체 조회 (소켓)                       | ✅   |
+| `GET`    | /users/not-read |       |        |      | 유저가 속한 세션의 해당 유저가 읽지 않은 메세지 모두 조회 (소켓) | ✅   |
+| `POST`   | /               |       |        |      | 세션 생성                                                        | ✅   |
+| `PUT`    | /:id            |       |        |      | 세션 수정                                                        | ✅   |
+| `DELETE` | /:id            |       |        |      | 세션 삭제                                                        | ✅   |
+
+#### NestJS Gateway subscribe messages
+
+socket.io path: /channel
+
+| message                                | body                   | auth | response                          | desc                         |
+| -------------------------------------- | ---------------------- | ---- | --------------------------------- | ---------------------------- |
+| initialize                             |                        | ✅   | sessionList, userData, nowSession | 연결 초기화                  |
+| createSession                          | mentoring session dto  | ✅   | nowSession                        | 세션 생성                    |
+| joinSession                            | session_id             | ✅   | nowSession                        | 세션 참여                    |
+| compareSessionWithPassword             | session_id, password   | ✅   | hashed password                   | 비공개 세션 비밀번호 검증    |
+| outSession                             | session_id             | ✅   |
+| updateSession, sessionList, nowSession | 세션 나가기            |
+| waitlist                               | session_id             | ✅   | updateSession, nowSession         | 세션에서 대기열로 이동       |
+| changeSession                          | session_id             | ✅   | updateSession, nowSession         | 세션 이동, 유저 상태 값 변경 |
+| saveMessage                            | session_id, message    | ✅   | updateSession                     | 세션 범위 메세지 전송        |
+| deleteMessage                          | session_id, message_id | ✅   | updateSession                     | 세션 범위 메세지 삭제        |
+
+#### 세션 플로우차트
+
+```mermaid
+sequenceDiagram
+  autonumber
+
+  actor C as Client
+  participant M as MentoringPage
+
+  note right of C: 페이지 이동
+  C ->> M: in page
+  note right of M: 소켓 연결
+  create participant G as Gateway
+  M ->> G: socket connection
+  rect rgb(5, 5, 5)
+    note over M,G: [[initialize]]
+    %% initialize
+    M -->> +G: 세션 및 유저 데이터 요청
+    note right of M: client.emit("initialize")
+    create participant DB as Database
+    G -->> +DB: 세션 찾기
+    DB -->> G: 세션 리스트
+    alt 토큰 검증 통과
+      note left of G: 룸 연결 초기화
+      G -->> M: 유저의 멘토링 상태 초기화
+      note left of G: 초기 데이터 응답
+      G -->> M: 세션 리스트 응답
+      note left of G: server.emit("updateSessionList")
+      G -->> -M: 유저 토큰 데이터
+      note left of G: server.emit("updateUserData")
+    else 토큰 검증 실패
+      G -->> M: WsException
+    end
+    G -> M: 완료
+  end
+  rect rgb(5, 5, 5)
+    note over M,G: [[createSession]]
+    %% createSession
+    M ->> +G: 방 생성 요청
+    note right of M: client.emit("createSession")
+    note right of M: topic, objective, format, limit, category, note
+    note left of G: 세션 생성
+    G -->> +DB: 세션 생성
+    note left of G: 멘토링 생성
+    G -->> DB: 멘토링 생성
+    note left of G: 멘토링 status 변경 (enter)
+    G -->> DB: 멘토링 status -> "enter"
+    G -->> M: 세션 리스트 응답
+    G -->> DB: 멘토링 생성
+    G -->> DB: 세션 단일 조회
+    DB -->> -G: 세션 단건
+    G ->> -M: 세션 응답
+    note left of G: server.emit("updateSession")
+    G -> M: 완료
+  end
+  rect rgb(5, 5, 5)
+    note over M,G: [[changeCurrentSession]]
+    note right of M: client.emit('join', { session_id })
+    %% enter session
+    M ->> +G: 방 입장 요청
+    note left of G: 제한인원 확인
+    alt 방에 이미 참여 했을 시
+    M -->> G: 멘토링 상태 변경
+    note left of G: 멘토링 status 변경 (enter)
+    G -->> M: 변경한 세션 응답 (broadcast)
+    else 방에 참여하지 않았을 시
+    note left of G: 멘토링 생성 (enter)
+    note left of G: server.to("room").emit("updateSession", session)
+
+    else 인원 초과
+    G -> M: 끝(입장 거절)
+    end
+    note left of G: 세션 찾기
+    note left of G: 세션에 속한 멘토링 찾기
+    note left of G: 멘토링 찾아서 status 변경 (enter)
+    G -->> -M: 세션 리스트 및 입장 세션 응답
+  end
+```
