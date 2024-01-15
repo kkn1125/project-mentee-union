@@ -17,6 +17,7 @@
     - [Mentoring Session](#mentoring-session)
       - [NestJS Gateway subscribe messages](#nestjs-gateway-subscribe-messages)
       - [세션 플로우차트](#세션-플로우차트)
+  - [Author](#author)
 
 # 멘티 유니온: 성장을 위한 커뮤니티
 
@@ -246,3 +247,12 @@ socket.io path: /channel
 #### 세션 플로우차트
 
 <div><img src="https://mermaid.ink/img/pako:eNqtVttu20YQ_ZUFgSASSvkit06ihzxEDvRSAQWCIg9RUKzIFbWpRKrkyq1rCLARxTBsp0nRqLZTKVCRNBcgRWnHAfTg9oPE5T90llzS1M2ukT4YpmbOzJydOXtZVzRLJ0pOcch3TWJqZIViw8b1kokQbjLLbNbLxA5-acyyUR5hB-VrlJhMGBvYZlSjDWwyVBSuIjgsm5rGV9ggAmFajCCbGlWGrArK55D_0wHvnfA3Gwj-eU8OBSiPMjdvomIOURNSTgsEH9_a46e_IL7vDo9dgdBsggGT5FAQHApg_R6vCUgxSFzIIcfSviUMaZZpEo1RyxReGz6RbZRT2YUFVf6lhUNWt1aJjYoqhN-7R03KKK7RH8n9-yHkyhV0ZgxNUE7U-wwieHvAHx0gz32CeLfP-xvIe-zCiv22i_jzZ_z4z0Sh5DK1oLlzpE5ZqqQkKiiS2pRlr9wS617BDJexI7kUJJeVWzEZ7v4zHLihG0IysjcR1dfv-c4rf2cQAnCNIX-r72-6aHi8wV_34NfH4YfT0CuJ10gl4A1ZvJcDORvET7ahjn_4LMJKLmKIQS94D8q9O4D03ptNxB9u-g-7k1HjFUJAso-9n73dj1OKjC1oDDie1yE2DDrqeLOhQ3vvEMcBlXxJHRY3Pi6RiRcSdSjmdJkaX4NRzCwuQGoOGes5333l772dXOJd5_YPGmlESoZYU4_nHjbhsO293BM26bqM2kONySYkBD9ijzUvJe-572CWPd4-uozCR1Mq6RlBzGpQTUVW-YHYv6tERRXLrmOmohqFRCrSIIth2WtqEJvIklSQ3AcBydnbJOGeUHlCtRNJRI7pgNlpHIZZ00Heh43h8d8oBY0hdvqcrBIPMy4pAbikjKAvkv-FVBOAKNHuW947Rfx313--N3p6ZApJ1PDo5EyDcpvIliYYXGL7xXL4f0RdxaZB8k3bhsaNaftckV59YFHzqorWgWsQ9Q3VUSsd74pgDpFv6q548Yi_-GNyVySl2e_6nS7vDfhvT5F_2IGvs3MYcvD9p8GF-ReM0x3w_ffI_3Wb99pwQnRHLp8xkQZHa6iuT5ci9CX0AtXR0aJU2bawrmGHJQ-ziHjA2O8cBNd-Z4fDV5L6RbtslMwMATEL5GNbVh1UM0NNajSkJEfZc3G7RLdbJDdvs5eSsxseuby_nR47bGcdMImLdjok6MrWY9HHxGLPCRtB8U6bt7v_YWCZacdB8CaRihzfnrAyRVXqBI5WqsOzcF0YSwqrkjq8QHLwqZMKbtaYOHZaABWPxDtrpqbkKhi6qcqWy2dkbCU6hXdhMXxrBk_OCHk78MTAGqiIwM91ha01BNiAKxjA8HKrUEPYm3YNzFXGGk5ufl645wzKqs3ynGbV5x2qV-FlVF29sTy_nF2-jrNLZPnaEv5iaUnXyos3rleyny9W9GsLi1mstFqtfwGv82m_?type=jpg" /></div>
+
+## Author
+
+|                                                               Profile                                                               |
+| :---------------------------------------------------------------------------------------------------------------------------------: |
+| <p align="center">[<img width="150" src="https://avatars.githubusercontent.com/u/71887242?v=4" />](https://github.com/kkn1125/)</p> |
+|                                                               kimson                                                                |
+|                                                [📝 Blog](https://kkn1125.github.io/)                                                |
+|                                               [📧 Email](mailto:chaplet01@gmail.com)                                                |
