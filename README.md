@@ -45,10 +45,19 @@
 
 ## 기술 스택
 
-- 웹 프론트엔드: React, Vue.js 등을 활용한 사용자 친화적 인터페이스
-- 백엔드: Node.js, Express.js 등 서버 사이드 로직 및 API 개발
-- 데이터베이스: MongoDB, MySQL 등 커뮤니티 데이터 관리
-- 클라우드 및 배포: AWS, Docker 등을 통한 서비스 호스팅 및 관리
+<p align="center">
+  <img width="50" height="50" src="https://cdn.simpleicons.org/nestjs/E0234E" title="NestJS"></img>
+  <img width="50" height="50" src="https://cdn.simpleicons.org/mariadb/003545" title="MadiaDB"></img>
+  <img width="50" height="50" src="https://cdn.simpleicons.org/nginx/009639" title="Nginx"></img>
+  <img width="50" height="50" src="https://cdn.simpleicons.org/typescript/3178C6" title="TypeScript"></img>
+  <img width="50" height="50" src="https://cdn.simpleicons.org/react/61DAFB" title="React"></img>
+  <img width="50" height="50" src="https://cdn.simpleicons.org/socket.io/010101" title="Socket.io"></img>
+</p>
+
+- 웹 프론트엔드: React를 활용한 SPA 제작, 웹소켓을 이용한 채팅 서비스 개발
+- 백엔드: Node.js, Nest.js를 사용한 서버 사이드 로직 및 API 개발
+- 데이터베이스: MySQL, MariaDB를 사용한 데이터 관리
+- 클라우드 및 배포: Oracle Cloud 프론트 배포 및 Cloudtype로 NestJS API 서버 배포를 통한 서비스 호스팅 및 관리
 
 ## 데이터베이스 정의서
 
