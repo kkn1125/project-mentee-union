@@ -1,6 +1,26 @@
+- [멘티 유니온: 성장을 위한 커뮤니티](#멘티-유니온-성장을-위한-커뮤니티)
+  - [프로젝트 목표](#프로젝트-목표)
+  - [주요 기능](#주요-기능)
+  - [커뮤니티 참여 방식](#커뮤니티-참여-방식)
+  - [기술 스택](#기술-스택)
+  - [데이터베이스 정의서](#데이터베이스-정의서)
+  - [API 정의서](#api-정의서)
+    - [Users](#users)
+    - [Seminars](#seminars)
+    - [Forums](#forums)
+    - [Grade](#grade)
+    - [Mentoring](#mentoring)
+    - [Category](#category)
+    - [Messages](#messages)
+    - [Mailer](#mailer)
+    - [Auth](#auth)
+    - [Mentoring Session](#mentoring-session)
+      - [NestJS Gateway subscribe messages](#nestjs-gateway-subscribe-messages)
+      - [세션 플로우차트](#세션-플로우차트)
+
 # 멘티 유니온: 성장을 위한 커뮤니티
 
-이 프로젝트는 개인이 기존 스프링 부트로 제작한 프로젝트를 Node진영의 NestJS 프레임워크로 변경하여 새로 구축하며, GPT를 이용해 가상의 팀을 편성하여 제작하는 실험적이면서 실 서비스까지 목표로하는 프로젝트입니다.
+이 프로젝트는 개인이 기존 `Spring Boot`로 제작한 프로젝트를 `Node`진영의 `NestJS` 프레임워크로 변경하여 새로 구축하는 것을 목표로 합니다. 기존 레벨링 시스템에 추천 및 승급 시스템을 추가하여 보다 나은 서비스를 구현하고 배포합니다.
 
 ## 프로젝트 목표
 
@@ -29,7 +49,15 @@
 - 데이터베이스: MongoDB, MySQL 등 커뮤니티 데이터 관리
 - 클라우드 및 배포: AWS, Docker 등을 통한 서비스 호스팅 및 관리
 
-## API 정의
+## 데이터베이스 정의서
+
+![MenteeUnion-DB-Schemas](https://github.com/kkn1125/project-mentee-union/assets/71887242/1d30942d-df9e-4e99-894b-2d1d8f9e19a9)
+
+![MenteeUnion-DB-Docs](https://github.com/kkn1125/project-mentee-union/assets/71887242/efb8910c-8bea-4662-a1da-bd0f038c7092)
+
+[데이터베이스 문서 바로가기](https://dbdocs.io/xpfjrnseks1/mentee-union-project)
+
+## API 정의서
 
 - protocol: https
 - host: api.menteeunion.kro.kr
@@ -46,25 +74,25 @@
 
 start_path: /users
 
-| method   | uri                         | query | params   | body            | desc                         | auth |
-| -------- | --------------------------- | ----- | -------- | --------------- | ---------------------------- | ---- |
-| `GET`    | /                           |       |          |                 | 전체 조회                    |      |
-| `GET`    | /:id                        |       | pk       |                 | 단건 조회                    |      |
-| `GET`    | /profile                    |       |          |                 | 단건 조회                    | ✅   |
-| `GET`    | /profile/seminars           |       |          |                 | 유저 세미나 정보 조회        | ✅   |
-| `GET`    | /profile/forums             |       |          |                 | 유저 포럼 정보 조회          | ✅   |
-| `GET`    | /profile/points             |       |          |                 | 유저 포인트 시스템 정보 조회 | ✅   |
-| `GET`    | /profile/resource/:filename |       | filename |                 | 유저 프로필 이미지 조회      | ✅   |
-| `GET`    | /socket/profile             |       |          |                 | 소켓서버 프로필 조회         | ✅   |
-| `POST`   | /                           |       |          | user table 참조 | 회원가입                     | ✅   |
-| `POST`   | /points/already             |       |          |                 | 이미 추천했는지 여부         | ✅   |
-| `POST`   | /user-points                |       |          |                 | 특정 사용자 추천             | ✅   |
-| `POST`   | /check/email                |       |          |                 | 이메일 중복 검증             | ✅   |
-| `POST`   | /check/username             |       |          |                 | 유저네임 중복 검증           | ✅   |
-| `PUT`    | /:id                        |       | pk       |                 | 회원정보 수정                | ✅   |
-| `PUT`    | /profile                    |       | pk       |                 | 회원 프로필 이미지 수정      | ✅   |
-| `DELETE` | /:id                        |       | pk       |                 | 회원탈퇴                     | ✅   |
-| `DELETE` | /dormant                    |       | pk       |                 | 회원탈퇴 취소                | ✅   |
+| method   | uri                         | query | params   | body                                                                                                                      | desc                         | auth |
+| -------- | --------------------------- | ----- | -------- | ------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ---- |
+| `GET`    | /                           |       |          |                                                                                                                           | 전체 조회                    |      |
+| `GET`    | /:id                        |       | pk       |                                                                                                                           | 단건 조회                    |      |
+| `GET`    | /profile                    |       |          |                                                                                                                           | 단건 조회                    | ✅   |
+| `GET`    | /profile/seminars           |       |          |                                                                                                                           | 유저 세미나 정보 조회        | ✅   |
+| `GET`    | /profile/forums             |       |          |                                                                                                                           | 유저 포럼 정보 조회          | ✅   |
+| `GET`    | /profile/points             |       |          |                                                                                                                           | 유저 포인트 시스템 정보 조회 | ✅   |
+| `GET`    | /profile/resource/:filename |       | filename |                                                                                                                           | 유저 프로필 이미지 조회      | ✅   |
+| `GET`    | /socket/profile             |       |          |                                                                                                                           | 소켓서버 프로필 조회         | ✅   |
+| `POST`   | /                           |       |          | [user table 참조](https://dbdocs.io/xpfjrnseks1/mentee-union-project?table=user&schema=mentee-union&view=table_structure) | 회원가입                     | ✅   |
+| `POST`   | /points/already             |       |          |                                                                                                                           | 이미 추천했는지 여부         | ✅   |
+| `POST`   | /user-points                |       |          |                                                                                                                           | 특정 사용자 추천             | ✅   |
+| `POST`   | /check/email                |       |          |                                                                                                                           | 이메일 중복 검증             | ✅   |
+| `POST`   | /check/username             |       |          |                                                                                                                           | 유저네임 중복 검증           | ✅   |
+| `PUT`    | /:id                        |       | pk       |                                                                                                                           | 회원정보 수정                | ✅   |
+| `PUT`    | /profile                    |       | pk       |                                                                                                                           | 회원 프로필 이미지 수정      | ✅   |
+| `DELETE` | /:id                        |       | pk       |                                                                                                                           | 회원탈퇴                     | ✅   |
+| `DELETE` | /dormant                    |       | pk       |                                                                                                                           | 회원탈퇴 취소                | ✅   |
 
 ### Seminars
 
@@ -130,6 +158,32 @@ start_path: /mentoring
 | `PUT`    | /:id                                   |       | pk                  |      | 수정                    | ✅   |
 | `DELETE` | /:id                                   |       | pk                  |      | 삭제                    | ✅   |
 | `DELETE` | /session/:session_id/mentee/:mentee_id |       | session_pk, user_pk |      | 세션에 속한 멘토링 삭제 | ✅   |
+
+### Category
+
+> 분류 API
+
+start_path: /categories
+
+| method | uri | query | params | body | desc      | auth |
+| ------ | --- | ----- | ------ | ---- | --------- | ---- |
+| `GET`  | /   |       |        |      | 전체 조회 |      |
+
+### Messages
+
+> 분류 API
+
+start_path: /messages
+
+| method   | uri                                 | query                                                                                                                           | params               | body | desc                              | auth |
+| -------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ---- | --------------------------------- | ---- |
+| `GET`    | /                                   |                                                                                                                                 |                      |      | 전체 조회                         |      |
+| `GET`    | /:id                                |                                                                                                                                 | pk                   |      | 단건 조회                         |      |
+| `GET`    | /session/:mentoring_session_id      |                                                                                                                                 | mentoring_session_pk |      | 세션에 속한 메세지 전체 조회      |      |
+| `POST`   | /read/session/:mentoring_session_id |                                                                                                                                 | mentoring_session_pk |      | 세션에 속한 메세지 모두 읽음 처리 | ✅   |
+| `POST`   | /save                               | session_id, message                                                                                                             | 메세지 저장          | ✅   |
+| `PUT`    | /:id                                | [message table 참조](https://dbdocs.io/xpfjrnseks1/mentee-union-project?table=message&schema=mentee-union&view=table_structure) | 메세지 수정          | ✅   |
+| `DELETE` | /soft/:id                           | pk                                                                                                                              | 메세지 삭제          | ✅   |
 
 ### Mailer
 
